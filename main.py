@@ -120,6 +120,7 @@ def run(image1, image2):
     CF.BaseUrl.set(BASE_URL)
 
     
+    
 
     print(image1, image2)
 
