@@ -1,4 +1,5 @@
 import cognitive_face as CF
+import json
 
 from PyQt5.QtGui import QIcon
 import sys
@@ -118,8 +119,13 @@ def run(image1, image2):
 
     BASE_URL = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0'  # Replace with your regional Base URL
     CF.BaseUrl.set(BASE_URL)
-
-    
+    print("Getting face data")
+    face1 = CF.face.detect(image1)
+    face2 = CF.face.detect(image2)
+    print("tried to get faces")
+    json1 = json.loads(face1)
+    print(face1)
+    print(face2)
     
 
     print(image1, image2)
