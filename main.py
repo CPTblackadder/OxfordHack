@@ -39,11 +39,11 @@ class Window(QWidget):
         imgtwobut.clicked.connect(lambda: self.openImageFile2(imgtwobut))
 
 
-        image1 = QLabel(self)
-        image2 = QLabel(self)
-        blank = QPixmap("heman.jpg")
-        image1.setPixmap(blank)
-        image2.setPixmap(blank)
+        self.image1 = QLabel(self)
+        self.image2 = QLabel(self)
+        blnk = QPixmap("blank1.jpg")
+        self.image1.setPixmap(blnk)
+        self.image2.setPixmap(blnk)
 
 
 
@@ -55,8 +55,8 @@ class Window(QWidget):
 
         hboxImages = QHBoxLayout()
         hboxImages.addStretch(1)
-        hboxImages.addWidget(image1)
-        hboxImages.addWidget(image2)
+        hboxImages.addWidget(self.image1)
+        hboxImages.addWidget(self.image2)
 
         vbox = QVBoxLayout()
         vbox.addStretch(1)
@@ -92,9 +92,7 @@ class Window(QWidget):
                                                   "All Files (*);;Python Files (*.py)", options=options)
         if fileName:
             self.second_image = fileName
-            pixmap = QPixmap(self.second_image)
-
-            print(self)
+            self.image2.setPixmap(QPixmap(self.second_image))
 
     def openImageFile1(self, button):
         options = QFileDialog.Options()
@@ -103,8 +101,7 @@ class Window(QWidget):
                                                 "All Files (*);;Python Files (*.py)", options=options)
         if fileName:
             self.first_image = fileName
-            pixmap = QPixmap(self.first_image)
-            print(self)
+            self.image1.setPixmap(QPixmap(self.first_image))
 
 
 def run(image1, image2):
