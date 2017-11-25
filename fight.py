@@ -2,6 +2,10 @@
 import cognitive_face as CF
 import json
 
+
+IMAGE1 = 1
+IMAGE2 = 2
+
 def main(image1, image2):
     """
     takes two image locations

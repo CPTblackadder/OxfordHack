@@ -38,6 +38,9 @@ class Window(QWidget):
         imgtwobut.move(200, 200)
         imgtwobut.clicked.connect(lambda: self.openImageFile2(imgtwobut))
 
+        self.infotext = QLabel(self)
+        self.infotext.setText("Choose images to fight!")
+
 
         self.image1 = QLabel(self)
         self.image2 = QLabel(self)
@@ -45,6 +48,10 @@ class Window(QWidget):
         self.image1.setPixmap(blnk)
         self.image2.setPixmap(blnk)
 
+
+        hboxTop = QHBoxLayout()
+        hboxTop.addStretch(1)
+        hboxTop.addWidget(self.infotext)
 
 
         hboxBottom = QHBoxLayout()
@@ -60,12 +67,11 @@ class Window(QWidget):
 
         vbox = QVBoxLayout()
         vbox.addStretch(1)
+        vbox.addLayout(hboxTop)
         vbox.addLayout(hboxImages)
-
         vbox.addLayout(hboxBottom)
 
         self.setLayout(vbox)
-
 
         self.setGeometry(500, 500, 1000, 800)
         self.setWindowTitle('Who Would Win?!')
@@ -83,7 +89,8 @@ class Window(QWidget):
         if self.first_image == "" or self.second_image == "":
             print("Images not loaded!")
         else:
-            run(self.first_image, self.second_image)
+            self.setWinner(fight.main(self.first_image, self.second_image))
+
 
     def openImageFile2(self, button):
         options = QFileDialog.Options()
@@ -103,17 +110,11 @@ class Window(QWidget):
             self.first_image = fileName
             self.image1.setPixmap(QPixmap(self.first_image))
 
-
-def run(image1, image2):
-    """
-    Takes in two image urls
-    :param image1:
-    :param image2:
-    :return:
-    """
-    winner = fight.main(image1, image2)
-
-
+    def setWinner(self, winner):
+        if winner == fight.IMAGE1:
+            self.infotext.setText("First Image won!")
+        else:
+            self.infotext.setText("Second Image won!")
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
