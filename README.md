@@ -1,5 +1,7 @@
 # OxfordHack
-Pointless style challenge
+Who Would Win?
 
-Go to website and play against others in set rounds.
+Django Application
+
+
 
