@@ -36,12 +36,14 @@ class Window(QWidget):
         imgtwobut.move(200, 200)
         imgtwobut.clicked.connect(lambda: self.openImageFile2(imgtwobut))
 
-        blank = QPixmap("heman.jpg")
-        self.image1.setPixmap(blank)
-        self.image2.setPixmap(blank)
 
-        self.image1 = QLabel(self)
-        self.image2 = QLabel(self)
+        image1 = QLabel(self)
+        image2 = QLabel(self)
+        blank = QPixmap("heman.jpg")
+        image1.setPixmap(blank)
+        image2.setPixmap(blank)
+
+
 
         hboxBottom = QHBoxLayout()
         hboxBottom.addStretch(1)
@@ -60,16 +62,13 @@ class Window(QWidget):
 
         vbox.addLayout(hboxBottom)
 
-
         self.setLayout(vbox)
 
 
         self.setGeometry(500, 500, 1000, 800)
         self.setWindowTitle('Who Would Win?!')
         self.setWindowIcon(QIcon('web.png'))
-        if self.firstload:
-            self.center()
-            self.firstload = False
+        self.center()
         self.show()
 
     def center(self):
@@ -92,7 +91,8 @@ class Window(QWidget):
         if fileName:
             self.second_image = fileName
             pixmap = QPixmap(self.second_image)
-            self.image2.setPixmap(pixmap)
+
+            print(self)
 
     def openImageFile1(self, button):
         options = QFileDialog.Options()
@@ -102,7 +102,7 @@ class Window(QWidget):
         if fileName:
             self.first_image = fileName
             pixmap = QPixmap(self.first_image)
-            self.image1.setPixmap(pixmap)
+            print(self)
 
 
 def run(image1, image2):
