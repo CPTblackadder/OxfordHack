@@ -111,6 +111,9 @@ def run(image1, image2):
     :param image2:
     :return:
     """
+
+
+
     KEY = '8b9d5cf6d62e4b5d9436f59acd5e0ba4'  # Replace with a valid subscription key (keeping the quotes in place).
     CF.Key.set(KEY)
 
