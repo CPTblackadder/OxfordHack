@@ -1,3 +1,4 @@
+import cognitive_face as CF
 
 from PyQt5.QtGui import QIcon
 import sys
@@ -112,6 +113,13 @@ def run(image1, image2):
     :param image2:
     :return:
     """
+    KEY = '8b9d5cf6d62e4b5d9436f59acd5e0ba4'  # Replace with a valid subscription key (keeping the quotes in place).
+    CF.Key.set(KEY)
+
+    BASE_URL = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0'  # Replace with your regional Base URL
+    CF.BaseUrl.set(BASE_URL)
+
+    
 
     print(image1, image2)
 
